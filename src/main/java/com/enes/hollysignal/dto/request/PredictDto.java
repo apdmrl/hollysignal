@@ -1,19 +1,18 @@
-package com.enes.hollysignal.model.prediction;
+package com.enes.hollysignal.dto.request;
 
-import com.enes.hollysignal.model.Base;
-import com.enes.hollysignal.model.Status;
-import com.enes.hollysignal.model.auth.Account;
+import com.enes.hollysignal.model.prediction.CurrencyType;
+import com.enes.hollysignal.model.prediction.Pair;
+import com.enes.hollysignal.model.prediction.PredictType;
 import com.enes.hollysignal.model.system.FileResource;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Accessors(chain = true)
-@Document(collection = "Predict")
-@TypeAlias("Predict")
-public class Predict extends Base {
+public class PredictDto {
+    @Getter
+    @Setter
+    private String id;
 
     @Getter
     @Setter
@@ -49,14 +48,6 @@ public class Predict extends Base {
 
     @Getter
     @Setter
-    private Status status;
-
-    @Getter
-    @Setter
-    private int purchased;
-
-    @Getter
-    @Setter
     private double predictPrice;
 
     @Getter
@@ -69,14 +60,5 @@ public class Predict extends Base {
 
     @Getter
     @Setter
-    private boolean isApproved = false;
-
-    @Getter
-    @Setter
     private String accountId;
-
-    public boolean isEnabled() {
-        return status == Status.ENABLED;
-    }
-
 }

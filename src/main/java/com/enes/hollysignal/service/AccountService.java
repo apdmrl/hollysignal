@@ -21,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.UUID;
 
 
 @Service
@@ -120,7 +121,8 @@ public class AccountService implements UserDetailsService {
                     .setRole(Role.user())
                     .setCreated(new Date());
 
-            accountRepository.save(account);
+            account.setId(UUID.randomUUID().toString());
+            save(account);
 
             return new GenericResponse()
                     .setCode(0)
@@ -130,6 +132,10 @@ public class AccountService implements UserDetailsService {
                     .setCode(1)
                     .setMessage("Account exists.");
         }
+    }
+
+    public Account save(Account acct) {
+        return accountRepository.save(acct);
     }
 
 }

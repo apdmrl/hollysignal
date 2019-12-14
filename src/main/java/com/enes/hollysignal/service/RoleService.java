@@ -57,6 +57,4 @@ public class RoleService {
     public Role get(String name) {
         return roles.get(name);
     }
-
-
 }
